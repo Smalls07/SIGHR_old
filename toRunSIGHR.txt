@@ -1,0 +1,15 @@
+data = readRDS("demoData.RData")
+Y = data$Y
+X = cbind(1, data$X)
+q = 1
+D = data$D
+Dtil = list("loc" = rbind(c(1,3),c(1,1)),
+	    "hyper" = rbind(c(900,100),c(100,900)))
+			 
+coef = rep(0, dim(X)[2])
+prob = rep(0.5, dim(D)[1])
+iter = 2000
+set.seed(1)
+run = SIGHR(X, Y, D, Dtil, q, coef, prob, iter)
+
+
